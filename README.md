@@ -1,41 +1,37 @@
-# Ng-Busy
-
-[![npm version](https://img.shields.io/npm/v/angular2-busy.svg?style=flat-square)](https://www.npmjs.com/package/angular2-busy) [![Build Status](https://img.shields.io/travis/devyumao/angular2-busy/master.svg?style=flat-square)](https://travis-ci.org/devyumao/angular2-busy)
-
 **Ng Busy** can show busy/loading indicators on any promise, or on any Observable's subscription.
 
 ![demo](https://raw.githubusercontent.com/devyumao/devyumao.github.io/master/angular2-busy/img/demo.gif)
 
-Rewritten from [angular-busy](https://github.com/cgross/angular-busy), and add some new features in terms of Angular 2.
+Rewritten from [angular2-busy](https://github.com/devyumao/angular2-busy), and add some new features in terms of Angular 2.
 
 ### Built with Angular 5.0.0
 
 ## Installation
 
 ```shell
-~~npm install --save angular2-busy~~
+npm install --save ng-busy
 ```
 
 ## Link CSS
 
 ```html
-~~<link rel="stylesheet" href="/node_modules/angular2-busy/build/style/busy.css">~~
+<link rel="stylesheet" href="/node_modules/ng-busy/src/style/busy.css">
 ```
 
 ## Getting Started
 
-Import the `BusyModule` in your root application module:
+Import the `NgBusyModule` in your root application module:
 
 ```typescript
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {BusyModule} from 'angular2-busy';
+import {NgBusyModule} from 'ng-busy';
 
 @NgModule({
 	imports: [
     	// ...
         BrowserAnimationsModule,
-        BusyModule
+        NgBusyModule
     ],
 	// ...
 })
@@ -47,7 +43,7 @@ Reference your promise in the `ngBusy` directive:
 
 ```typescript
 import {Component, OnInit} from '@angular/core';
-import {Http} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
     selector: 'some',
@@ -58,7 +54,7 @@ import {Http} from '@angular/http';
 class SomeComponent implements OnInit {
     busy: Promise<any>;
 
-    constructor(private http: Http) {}
+    constructor(private http: HttpClient) {}
 
     ngOnInit() {
         this.busy = this.http.get('...').toPromise();
@@ -130,12 +126,12 @@ In the root application module, you can do this:
 
 ```typescript
 import {NgModule} from '@angular/core';
-import {BusyModule, BusyConfig} from 'angular2-busy';
+import {NgBusyModule, BusyConfig} from 'ng-busy';
 
 @NgModule({
     imports: [
     	// ...
-        BusyModule.forRoot(
+        NgBusyModule.forRoot(
         	new BusyConfig({
             	message: 'Don\'t panic!',
                 backdrop: false,
@@ -151,48 +147,15 @@ import {BusyModule, BusyConfig} from 'angular2-busy';
 export class AppModule
 ```
 
-## FAQ
-
-### The indicator's position is not inside the `ngBusy` container
-
-You may add `position: relative` style to your `ngBusy` container.
-
-### SystemJS Config?
-
-You may need this in your `systemjs.config.js`:
-
-```javascript
-{
-    paths: {
-        'npm:': 'node_modules/'
-    },
-    map: {
-        // ...
-        'angular2-busy': 'npm:angular2-busy'
-    },
-    packages: {
-        // ...
-        'angular2-busy': {
-            main: './index.js',
-            defaultExtension: 'js'
-        }
-    }
-}
-```
-
 
 ## TODO
-
-- Provide custom animations for the indicator
 
 - Unit & E2E test
 
 ## Credits
 
-Rewritten from [cgross](https://github.com/cgross)'s [angular-busy](https://github.com/cgross/angular-busy).
-
-Inspired by [ajoslin](https://github.com/ajoslin)'s [angular-promise-tracker](https://github.com/ajoslin/angular-promise-tracker).
+Rewritten from [devyumao](https://github.com/devyumao)'s [angular2-busy](https://github.com/devyumao/angular2-busy).
 
 ## LICENSE
 
-This project is licensed under the MIT license. See the [LICENSE](https://github.com/devyumao/angular2-busy/blob/master/LICENSE) file for more info.
+This project is licensed under the MIT license. See the [LICENSE](https://github.com/victos/ng-busy/blob/master/LICENSE) file for more info.
