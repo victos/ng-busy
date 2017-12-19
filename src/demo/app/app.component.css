@@ -1,0 +1,20 @@
+/**
+ * @file App style
+ * @author yumao<yuzhang.lille@gmail.com>
+ */
+.form-control:focus {
+  border-color: #e86c8c;
+}
+.c-input > input:checked ~ .c-indicator {
+  background-color: #b03a58;
+}
+.c-input > input:focus ~ .c-indicator {
+  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #b03a58;
+}
+.c-input > input:active ~ .c-indicator {
+  background-color: #e86c8c;
+}
+.btn:focus,
+.btn:focus:active {
+  outline: 0;
+}
