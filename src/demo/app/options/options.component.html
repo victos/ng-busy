@@ -20,9 +20,10 @@
     <div class="form-group row">
         <label for="options-template" class="col-sm-5 form-control-label">Template</label>
         <div class="col-sm-7">
-            <select class="form-control c-select" id="options-template" name="template" [(ngModel)]="templateType" (change)="changeTemplate($event.target.value)">
+            <select class="form-control c-select" id="options-template" name="template" [(ngModel)]="templateType" (change)="changeTemplate()">
                 <option value="default">Default</option>
                 <option value="custom">Custom</option>
+                <option value="template">Template</option>
             </select>
         </div>
     </div>

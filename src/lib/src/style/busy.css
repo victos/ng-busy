@@ -1,5 +1,5 @@
 .ng-busy {
-  z-index: 1002;
+  z-index: 9002;
 }
 .ng-busy,
 .ng-busy > *,
@@ -16,7 +16,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1001;
+  z-index: 9001;
   background: #fff;
   opacity: .7;
 }
@@ -26,7 +26,7 @@
 .ng-busy-default-sign {
   position: relative;
   display: inline-block;
-  z-index: 1003;
+  z-index: 9003;
   padding: 12px 14px;
   border: 1px solid #d8d8d8;
   border-top: 0;
