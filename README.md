@@ -112,7 +112,7 @@ In other words, you may use flexible syntax:
 | busy | Required | null | A busy thing (or an array of busy things) that will cause the loading indicator to show. |
 | message | Optional | 'Please wait...' | The message to show in the indicator which will reflect the updated values as they are changed. |
 | backdrop | Optional | true | A faded backdrop will be shown behind the indicator if true. |
-| template | Optional | A default template string | If provided, the custom template will be shown in place of the default indicatory template. The scope can be augmented with a `{{message}}` field containing the indicator message text. |
+| template | Optional | A default template component | The template can be a template or a component. If provided, the custom template will be shown in place of the default indicatory template. The scope can be augmented with a `{{message}}` field containing the indicator message text. |
 | delay | Optional | 0 | The amount of time to wait until showing the indicator. Specified in milliseconds.
 | minDuration | Optional | 0 | The amount of time to keep the indicator showing even if the busy thing was completed quicker. Specified in milliseconds.|
 | wrapperClass | Optional | 'ng-busy' | The name(s) of the CSS classes to be applied to the wrapper element of the indicator. |
@@ -127,6 +127,7 @@ In the root application module, you can do this:
 ```typescript
 import {NgModule} from '@angular/core';
 import {NgBusyModule, BusyConfig} from 'ng-busy';
+import {CustomBusyComponent} from '...'
 
 @NgModule({
     imports: [
@@ -135,7 +136,7 @@ import {NgBusyModule, BusyConfig} from 'ng-busy';
         	new BusyConfig({
             	message: 'Don\'t panic!',
                 backdrop: false,
-                template: '<div>{{message}}</div>',
+                template: CustomBusyComponent,
                 delay: 200,
                 minDuration: 600,
                 wrapperClass: 'my-class'
@@ -145,6 +146,36 @@ import {NgBusyModule, BusyConfig} from 'ng-busy';
 	// ...
 })
 export class AppModule
+```
+
+```typescript
+@Component({
+  selector: 'default-busy',
+  template: `
+    <div class="ng-busy-default-wrapper">
+          <div class="ng-busy-default-sign">
+            <div class="ng-busy-default-spinner">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+              <div class="bar4"></div>
+              <div class="bar5"></div>
+              <div class="bar6"></div>
+              <div class="bar7"></div>
+              <div class="bar8"></div>
+              <div class="bar9"></div>
+              <div class="bar10"></div>
+              <div class="bar11"></div>
+              <div class="bar12"></div>
+            </div>
+            <div class="ng-busy-default-text">{{message}}</div>
+          </div>
+        </div>
+  `,
+})
+export class CustomBusyComponent {
+  constructor(@Inject('message')public message: string) {};
+}
 ```
 
 

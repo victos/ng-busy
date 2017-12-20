@@ -42,7 +42,7 @@ export class BusyDirective implements DoCheck {
   private componentViewRef: ViewRef;
 
   public backdrop: boolean;
-  public template: string | TemplateRef<any> | Type<any>;
+  public template: TemplateRef<any> | Type<any>;
 
   constructor(private service: BusyService,
               private tracker: TrackerService,

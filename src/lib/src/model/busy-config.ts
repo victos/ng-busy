@@ -2,7 +2,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Component, TemplateRef, Type, Inject} from '@angular/core';
 
 export class BusyConfig implements IBusyConfig {
-    template: string;
+    template: TemplateRef<any> | Type<any>;
     delay: number;
     minDuration: number;
     backdrop: boolean;
@@ -45,7 +45,7 @@ export class DefaultBusyComponent {
 }
 
 export interface IBusyConfig {
-    template?: string | TemplateRef<any> | Type<any>;
+    template?: TemplateRef<any> | Type<any>;
     delay?: number;
     minDuration?: number;
     backdrop?: boolean;
