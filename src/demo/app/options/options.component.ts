@@ -35,31 +35,31 @@ export class OptionsComponent {
             setTimeout(() => {
                 resolve();
                 console.log('Promise finished!')
-            }, 8000);
+            }, 3000);
         });
 
-        const observable1: Observable<number> =  this.data.busy = Observable.create((observer: Observer<number>) => {
+        const observable1: Observable<number> = Observable.create((observer: Observer<number>) => {
             setTimeout(() => {
                 observer.next(1);
                 observer.complete();
             }, 1000);
         });
 
-        const observable2: Observable<number> =  this.data.busy = Observable.create((observer: Observer<number>) => {
+        const observable2: Observable<number> = Observable.create((observer: Observer<number>) => {
             setTimeout(() => {
                 observer.next(2);
                 observer.complete();
             }, 2000);
         });
 
-        const observable3: Observable<number> =  this.data.busy = Observable.create((observer: Observer<number>) => {
+        const observable3: Observable<number> = Observable.create((observer: Observer<number>) => {
             setTimeout(() => {
                 observer.next(3);
                 observer.complete();
             }, 5000);
         });
 
-        const observable4: Observable<number> =  this.data.busy = Observable.create((observer: Observer<number>) => {
+        const observable4: Observable<number> = Observable.create((observer: Observer<number>) => {
             setTimeout(() => {
                 observer.next(4);
                 observer.complete();
@@ -67,9 +67,9 @@ export class OptionsComponent {
         });
 
         this.data.busy = promise;
-        this.data.busy = observable1.subscribe((val: number) => {
-            console.log(`Observer${val} done!`);
-        });
+        // this.data.busy = observable1.subscribe((val: number) => {
+        //     console.log(`Observer${val} done!`);
+        // });
         // this.data.busy = observable2.subscribe((val: number) => {
         //     console.log(`Observer${val} done!`);
         // });
