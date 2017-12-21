@@ -1,2 +1,23 @@
-<my-lib></my-lib>
-<h3>Meaning is: {{meaning}}</h3>
+<github-corner></github-corner>
+<demo-header></demo-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <demo-options #options></demo-options>
+        </div>
+        <div class="col-sm-offset-1 col-sm-7">
+            <demo-table [loading]="options.data" #table [customTemplate]="customTemplate"></demo-table>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <demo-code [key]="options.templateType" [options]="options.data"></demo-code>
+        </div>
+    </div>
+
+    <ng-template #customTemplate>
+        <div style="margin-top: 110px; text-align: center;">Hi, This is from ng-template.</div>
+    </ng-template>
+</div>

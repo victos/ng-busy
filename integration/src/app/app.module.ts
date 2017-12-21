@@ -1,12 +1,39 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgBusyModule } from 'ng-busy';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {NgBusyModule} from 'ng-busy';
 
-import { AppComponent }  from './app.component';
+import {AppComponent} from './app.component';
+import {GithubCornerComponent} from './github-corner/github-corner.component';
+import {HeaderComponent} from './header/header.component';
+import {OptionsComponent} from './options/options.component';
+import {TableComponent} from './table/table.component';
+import {CustomBusyComponent} from './service/options-template';
+import {CodeComponent} from './code/code.component';
+import {TemplateService} from './service/template.service';
 
 @NgModule({
-  imports:      [ BrowserModule, NgBusyModule],
-  declarations: [ AppComponent ],
-  bootstrap:    [ AppComponent ]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        NgBusyModule
+    ],
+    declarations: [
+        AppComponent,
+        GithubCornerComponent,
+        HeaderComponent,
+        OptionsComponent,
+        TableComponent,
+        CustomBusyComponent,
+        CodeComponent
+    ],
+    entryComponents: [
+        CustomBusyComponent
+    ],
+    providers: [TemplateService],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

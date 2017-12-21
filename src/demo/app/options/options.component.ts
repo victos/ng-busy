@@ -8,6 +8,8 @@ import {HttpClient} from '@angular/common/http';
 
 import {BUSY_CONFIG_DEFAULTS, IBusyConfig} from 'ng-busy';
 import {TemplateService} from '../service/template.service';
+import {Observable} from 'rxjs/Observable';
+import {Observer} from 'rxjs/Observer';
 
 
 @Component({
@@ -28,10 +30,54 @@ export class OptionsComponent {
     }
 
     playDemo() {
-        // this.data.busy = this.http.get('https://httpbin.org/delay/3')
-        //     .subscribe();
 
-        this.data.busy = this.http.get('https://httpbin.org/delay/1')
-            .toPromise();
+        const promise = new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+                console.log('Promise finished!')
+            }, 8000);
+        });
+
+        const observable1: Observable<number> =  this.data.busy = Observable.create((observer: Observer<number>) => {
+            setTimeout(() => {
+                observer.next(1);
+                observer.complete();
+            }, 1000);
+        });
+
+        const observable2: Observable<number> =  this.data.busy = Observable.create((observer: Observer<number>) => {
+            setTimeout(() => {
+                observer.next(2);
+                observer.complete();
+            }, 2000);
+        });
+
+        const observable3: Observable<number> =  this.data.busy = Observable.create((observer: Observer<number>) => {
+            setTimeout(() => {
+                observer.next(3);
+                observer.complete();
+            }, 5000);
+        });
+
+        const observable4: Observable<number> =  this.data.busy = Observable.create((observer: Observer<number>) => {
+            setTimeout(() => {
+                observer.next(4);
+                observer.complete();
+            }, 4000);
+        });
+
+        this.data.busy = promise;
+        this.data.busy = observable1.subscribe((val: number) => {
+            console.log(`Observer${val} done!`);
+        });
+        // this.data.busy = observable2.subscribe((val: number) => {
+        //     console.log(`Observer${val} done!`);
+        // });
+        // this.data.busy = observable3.subscribe((val: number) => {
+        //     console.log(`Observer${val} done!`);
+        // });
+        // this.data.busy = observable4.subscribe((val: number) => {
+        //     console.log(`Observer${val} done!`);
+        // });
     }
 }
