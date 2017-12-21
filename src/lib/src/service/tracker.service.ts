@@ -76,7 +76,7 @@ export class TrackerService {
                 () => this.finishPromise(promise),
                 () => this.finishPromise(promise)
             );
-        } else if (promise instanceof Subscription) {
+        } else {
             promise.add(() => this.finishPromise(promise));
         }
     }
