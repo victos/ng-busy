@@ -37,8 +37,7 @@ export class BusyContainerDirective {
         animate(timing, inactiveStyle)
       ])
     ])
-  ],
-  styleUrls: ['./busy.component.css']
+  ]
 })
 export class BusyComponent {
   public wrapperClass: string;
