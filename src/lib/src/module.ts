@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BusyComponent } from './component/busy.component';
+import { BusyContainerDirective } from './component/busy.component';
 import { BusyBackdropComponent } from './component/busy-backdrop.component';
 import { BusyService } from './service/busy.service';
 import { TrackerService } from './service/tracker.service';
@@ -10,7 +11,7 @@ import { DefaultBusyComponent } from './model/busy-config';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [BusyComponent, BusyBackdropComponent, BusyDirective, DefaultBusyComponent],
+  declarations: [BusyComponent, BusyBackdropComponent, BusyDirective, DefaultBusyComponent, BusyContainerDirective],
   providers: [BusyService, TrackerService],
   exports: [BusyDirective],
   entryComponents: [BusyBackdropComponent, BusyComponent, DefaultBusyComponent]

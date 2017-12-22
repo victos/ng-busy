@@ -1,4 +1,5 @@
 export { BusyComponent } from './src/component/busy.component';
+export { BusyContainerDirective } from './src/component/busy.component';
 export { BusyBackdropComponent } from './src/component/busy-backdrop.component';
 export { BusyDirective } from './src/directive/busy.directive';
 export { BusyService } from './src/service/busy.service';
