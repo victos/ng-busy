@@ -3,14 +3,13 @@
  * @author yumao<yuzhang.lille@gmail.com>
  */
 
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import {BUSY_CONFIG_DEFAULTS, IBusyConfig} from 'ng-busy';
 import {TemplateService} from '../service/template.service';
 import {Observer} from 'rxjs/Observer';
 import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -20,14 +19,24 @@ import {Subscription} from 'rxjs/Subscription';
     styleUrls: ['./options.component.css']
 })
 export class OptionsComponent {
-    templateType: string = 'default';
+    templateType = 'default';
+    templates: any = [
+        {val: 'default', show: 'Default'},
+        {val: 'custom', show: 'Custom'},
+        {val: 'template', show: 'Template'}
+    ];
     data: IBusyConfig = Object.assign({}, BUSY_CONFIG_DEFAULTS);
 
     constructor(private http: HttpClient, private templateService: TemplateService) {
     }
 
-    changeTemplate() {
+    changeTemplate(tmp: string) {
+        this.templateType = tmp;
         this.data.template = this.templateService.getTemplate(this.templateType);
+    }
+
+    changeBackdrop(element: HTMLInputElement) {
+        this.data.backdrop = element.checked;
     }
 
     playDemo() {

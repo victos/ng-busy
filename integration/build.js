@@ -50,6 +50,7 @@ return Promise.resolve()
             'asset/css/busy.css',
             'asset/css/desert.css',
             'asset/css/prettify.css',
+            'asset/img/du.gif',
             'asset/css/bootstrap.min.css'
         ];
 
