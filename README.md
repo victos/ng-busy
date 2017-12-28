@@ -6,6 +6,10 @@ Rewritten from [angular2-busy](https://github.com/devyumao/angular2-busy), and a
 
 ### Built with Angular 5.0.0
 
+## Demo
+
+[https://victos.github.io/ng-busy/](https://victos.github.io/ng-busy/)
+
 ## Installation
 
 ```shell
