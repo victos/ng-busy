@@ -109,6 +109,18 @@ In other words, you may use flexible syntax:
 <div [ngBusy]="{busy: busy, message: 'Loading...', backdrop: false, delay: 200, minDuration: 600}"></div>
 ```
 
+## Event
+
+- busyStop : Will be triggered when the busy is done
+- busyStart : Will be triggered when the busy comes out.
+
+### Usage
+
+```html
+<!-- Simple syntax -->
+<div [ngBusy]="..."  (busyStop)="onBusyStop()" (busyStart)="onBusyStart()"></div>
+```
+
 ## Options
 
 | Option | Required | Default | Details |
