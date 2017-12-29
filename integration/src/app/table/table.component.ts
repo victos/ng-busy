@@ -20,4 +20,13 @@ export class TableComponent implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         this.templateService.setCustomTemplate(this.customTemplate);
     }
+
+    onBusyStart(): void {
+        console.log('what happened ?');
+        console.log('busy started');
+    }
+
+    onBusyStop(): void {
+        console.log('busy stopped');
+    }
 }

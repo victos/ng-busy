@@ -1,4 +1,4 @@
-<table class="table" [ngBusy]="loading">
+<table class="table" [ngBusy]="loading" (busyStop)="onBusyStop()" (busyStart)="onBusyStart()">
     <thead class="thead-default">
         <tr>
             <th>#</th>
