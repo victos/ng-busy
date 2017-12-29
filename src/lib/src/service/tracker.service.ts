@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, EventEmitter} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
 @Injectable()
@@ -8,6 +8,10 @@ export class TrackerService {
     durationPromise: number | any;
     delayJustFinished: boolean = false;
     minDuration: number;
+
+    private isBusyStarted = false;
+    onStartBusy: EventEmitter<any>;
+    onStopBusy: EventEmitter<any>;
 
     reset(options: IPromiseTrackerOptions) {
         this.minDuration = options.minDuration;
@@ -45,22 +49,32 @@ export class TrackerService {
     }
 
     isActive() {
+        let result;
         if (this.delayPromise) {
-            return false;
-        }
-
-        if (!this.delayJustFinished) {
-            if (this.durationPromise) {
-                return true;
+            result = false;
+        } else {
+            if (!this.delayJustFinished) {
+                if (this.durationPromise) {
+                    result = true;
+                } else {
+                    result = this.promiseList.length > 0;
+                }
+            } else {
+                this.delayJustFinished = false;
+                if (this.promiseList.length === 0) {
+                    this.durationPromise = undefined;
+                }
+                result = this.promiseList.length > 0;
             }
-            return this.promiseList.length > 0;
         }
-
-        this.delayJustFinished = false;
-        if (this.promiseList.length === 0) {
-            this.durationPromise = undefined;
+        if (result === false && this.isBusyStarted) {
+            this.onStopBusy.emit();
+            this.isBusyStarted = false;
+        } else if (result === true && !this.isBusyStarted) {
+            this.onStartBusy.emit();
+            this.isBusyStarted = true;
         }
-        return this.promiseList.length > 0;
+        return result;
     }
 
     private addPromise(promise: Promise<any> | Subscription) {

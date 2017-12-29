@@ -9,7 +9,9 @@ import {
   Renderer2,
   TemplateRef,
   ElementRef,
-  Type, ApplicationRef
+  Type, ApplicationRef,
+    Output,
+    EventEmitter
 } from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
@@ -35,6 +37,8 @@ import {ViewRef} from '@angular/core/src/linker/view_ref';
 })
 export class BusyDirective implements DoCheck {
   @Input('ngBusy') options: any;
+  @Output() busyStart = new EventEmitter();
+  @Output() busyStop = new EventEmitter();
   private optionsRecord: any;
   private optionsNorm: IBusyConfig;
   private busyRef: ComponentRef<BusyComponent>;
@@ -52,6 +56,8 @@ export class BusyDirective implements DoCheck {
               private injector: Injector,
               private appRef: ApplicationRef,
               private renderer: Renderer2) {
+    tracker.onStartBusy = this.busyStart;
+    tracker.onStopBusy = this.busyStop;
   }
 
   // As ngOnChanges does not work on Object detection, ngDoCheck is using
