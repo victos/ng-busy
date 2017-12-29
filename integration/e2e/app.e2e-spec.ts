@@ -1,21 +1,14 @@
-import { browser, element, by } from 'protractor';
+import { AppPage } from './app.po';
 
-describe('QuickStart Lib E2E Tests', function () {
+describe('integration App', () => {
+  let page: AppPage;
 
-  beforeEach(() => browser.get(''));
-
-  afterEach(() => {
-    browser.manage().logs().get('browser').then((browserLog: any[]) => {
-      expect(browserLog).toEqual([]);
-    });
+  beforeEach(() => {
+    page = new AppPage();
   });
 
-  it('should display lib', () => {
-    expect(element(by.css('h2')).getText()).toEqual('Hello Angular Library');
+  it('should display welcome message', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
-
-  it('should display meaning', () => {
-    expect(element(by.css('h3')).getText()).toEqual('Meaning is: 42');
-  });
-
 });

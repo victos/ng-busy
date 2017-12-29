@@ -50,7 +50,7 @@ export class DefaultBusyComponent {
         'custom': `@Component({
     selector: 'default-busy',
     template: \`
-        <div style="background: url('asset/img/du.gif') no-repeat center 20px; background-size: 72px;">
+        <div style="background: url('assets/img/du.gif') no-repeat center 20px; background-size: 72px;">
             <div style="margin-top: 110px; text-align: center; font-size: 18px; font-weight: 700; line-height: 110px;">
                 {{message}}
             </div>
