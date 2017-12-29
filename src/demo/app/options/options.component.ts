@@ -30,7 +30,7 @@ export class OptionsComponent {
     }
 
     playDemo() {
-
+        this.data.busy = [];
         const promise = new Promise(resolve => {
             setTimeout(() => {
                 resolve();
@@ -66,18 +66,18 @@ export class OptionsComponent {
             }, 4000);
         });
 
-        this.data.busy = promise;
-        // this.data.busy = observable1.subscribe((val: number) => {
-        //     console.log(`Observer${val} done!`);
-        // });
-        // this.data.busy = observable2.subscribe((val: number) => {
-        //     console.log(`Observer${val} done!`);
-        // });
-        // this.data.busy = observable3.subscribe((val: number) => {
-        //     console.log(`Observer${val} done!`);
-        // });
-        // this.data.busy = observable4.subscribe((val: number) => {
-        //     console.log(`Observer${val} done!`);
-        // });
+        this.data.busy.push(promise);
+        this.data.busy.push(observable1.subscribe((val: number) => {
+            console.log(`Observer${val} done!`);
+        }));
+        this.data.busy.push(observable2.subscribe((val: number) => {
+            console.log(`Observer${val} done!`);
+        }));
+        this.data.busy.push(observable3.subscribe((val: number) => {
+            console.log(`Observer${val} done!`);
+        }));
+        this.data.busy.push(observable4.subscribe((val: number) => {
+            console.log(`Observer${val} done!`);
+        }));
     }
 }
