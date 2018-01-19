@@ -1,6 +1,6 @@
 {
   "name": "ng-busy",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Show busy/loading indicators on any promise or subscription",
   "main": "./bundles/ng-busy.umd.js",
   "module": "./ng-busy.es5.js",
