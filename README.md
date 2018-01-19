@@ -147,19 +147,23 @@ import {CustomBusyComponent} from '...'
 
 @NgModule({
     imports: [
-    	// ...
-        NgBusyModule.forRoot(
-        	new BusyConfig({
-            	message: 'Don\'t panic!',
+            ...
+            NgBusyModule.forRoot(new BusyConfig({
+                message: 'Don\'t panic!',
                 backdrop: false,
                 template: CustomBusyComponent,
                 delay: 200,
-                minDuration: 600,
-                wrapperClass: 'my-class'
-            })
-        )
-    ],
-	// ...
+                minDuration: 600
+            }))
+        ],
+        declarations: [
+            ...
+            CustomBusyComponent,
+            ...
+        ],
+        entryComponents: [
+            CustomBusyComponent
+        ],
 })
 export class AppModule
 ```

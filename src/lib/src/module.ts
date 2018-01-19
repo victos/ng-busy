@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BusyComponent } from './component/busy.component';
@@ -7,7 +7,7 @@ import { BusyBackdropComponent } from './component/busy-backdrop.component';
 import { BusyService } from './service/busy.service';
 import { TrackerService } from './service/tracker.service';
 import { BusyDirective } from './directive/busy.directive';
-import { DefaultBusyComponent } from './model/busy-config';
+import {BusyConfig, DefaultBusyComponent} from './model/busy-config';
 
 @NgModule({
   imports: [CommonModule],
@@ -16,4 +16,13 @@ import { DefaultBusyComponent } from './model/busy-config';
   exports: [BusyDirective],
   entryComponents: [BusyBackdropComponent, BusyComponent, DefaultBusyComponent]
 })
-export class NgBusyModule { }
+export class NgBusyModule {
+    static forRoot(config: BusyConfig): ModuleWithProviders {
+        return {
+            ngModule: NgBusyModule,
+            providers: [
+                {provide: BusyConfig, useValue: config}
+            ]
+        };
+    }
+}

@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import {NgBusyModule} from 'ng-busy';
+import {BusyConfig, NgBusyModule} from 'ng-busy';
 
 import {AppComponent} from './app.component';
 import {GithubCornerComponent} from './github-corner/github-corner.component';
@@ -18,7 +18,13 @@ import {TemplateService} from './service/template.service';
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        NgBusyModule
+        NgBusyModule.forRoot(new BusyConfig({
+            message: 'Don\'t panic!',
+            backdrop: false,
+            template: CustomBusyComponent,
+            delay: 200,
+            minDuration: 600
+        }))
     ],
     declarations: [
         AppComponent,
