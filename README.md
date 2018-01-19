@@ -92,12 +92,6 @@ The `ngBusy` directive expects a ***busy thing***, which means:
 - Or an array of them
 - Or a configuration object
 In other words, you may use flexible syntax:
-<del>
-```html
-<!-- Simple syntax -->
-<div [ngBusy]="busy"></div> ~~
-```
-</del>
 
 ```html
 <!-- Collection syntax -->
