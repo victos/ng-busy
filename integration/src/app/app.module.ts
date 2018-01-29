@@ -13,27 +13,30 @@ import {CustomBusyComponent} from './service/options-template';
 import {CodeComponent} from './code/code.component';
 import {TemplateService} from './service/template.service';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        NgBusyModule
-    ],
-    declarations: [
-        AppComponent,
-        GithubCornerComponent,
-        HeaderComponent,
-        OptionsComponent,
-        TableComponent,
-        CustomBusyComponent,
-        CodeComponent
-    ],
-    entryComponents: [
-        CustomBusyComponent
-    ],
-    providers: [TemplateService],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    NgBusyModule,
+    BrowserAnimationsModule
+  ],
+  declarations: [
+    AppComponent,
+    GithubCornerComponent,
+    HeaderComponent,
+    OptionsComponent,
+    TableComponent,
+    CustomBusyComponent,
+    CodeComponent
+  ],
+  entryComponents: [
+    CustomBusyComponent
+  ],
+  providers: [TemplateService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

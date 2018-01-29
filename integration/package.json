@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "clean": "rimraf aot/ dist/ node_modules/ng-busy/",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

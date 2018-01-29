@@ -23,7 +23,7 @@ export class BusyContainerDirective {
 @Component({
   selector: 'ng-busy',
   template: `
-    <div [class]="wrapperClass" busy-container *ngIf="isActive()">
+    <div [class]="wrapperClass" @flyInOut busy-container *ngIf="isActive()">
       <ng-content></ng-content>
     </div>
   `,
