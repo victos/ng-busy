@@ -1,6 +1,6 @@
 {
   "name": "ng-busy",
-  "version": "1.4.4",
+  "version": "1.4.6",
   "description": "Show busy/loading indicators on any promise or subscription",
   "main": "./bundles/ng-busy.umd.js",
   "module": "./ng-busy.es5.js",
@@ -101,5 +101,8 @@
     "tslint": "^4.4.2",
     "typescript": "~2.4.2",
     "zone.js": "^0.8.4"
+  },
+  "dependencies": {
+    "rxjs": "^5.5.2"
   }
 }
