@@ -1,6 +1,6 @@
-import {Component, Directive, ViewChild, ElementRef, Inject} from '@angular/core';
+import {Component, Directive, ViewChild, ElementRef, Inject, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import {trigger, style, transition, animate} from '@angular/animations';
-
+import {Subscription} from 'rxjs/Subscription';
 import {TrackerService} from '../service/tracker.service';
 
 
@@ -39,17 +39,30 @@ export class BusyContainerDirective {
     ])
   ]
 })
-export class BusyComponent {
+export class BusyComponent implements OnDestroy {
   public wrapperClass: string;
+  sub: Subscription = new Subscription();
 
   @ViewChild(BusyContainerDirective, {read: ElementRef}) private busyContainer: ElementRef;
 
-  constructor(@Inject('busyConfig') private config: any,
-              private tracker: TrackerService) {
+  constructor(
+    @Inject('busyConfig') private config: any,
+    private tracker: TrackerService,
+    private readonly cdr: ChangeDetectorRef
+  ) {
     this.wrapperClass = this.config.wrapperClass;
+    this.sub.add(this.tracker.onCheckPending.subscribe(() => {
+      if (this.cdr) {
+          this.cdr.markForCheck();
+      }
+    }));
   }
 
   isActive() {
     return this.tracker.isActive();
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

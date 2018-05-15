@@ -13,6 +13,8 @@ export class TrackerService {
     onStartBusy: EventEmitter<any>;
     onStopBusy: EventEmitter<any>;
 
+    onCheckPending = new EventEmitter();
+
     reset(options: IPromiseTrackerOptions) {
         this.minDuration = options.minDuration;
 
@@ -34,6 +36,9 @@ export class TrackerService {
                 () => {
                     this.delayPromise = undefined;
                     this.delayJustFinished = true;
+                    if (this.promiseList.length === 0) {
+                        this.onCheckPending.emit();
+                    }
                 },
                 options.delay
             );
@@ -42,6 +47,9 @@ export class TrackerService {
             this.durationPromise = setTimeout(
                 () => {
                     this.durationPromise = undefined;
+                    if (this.promiseList.length === 0) {
+                        this.onCheckPending.emit();
+                    }
                 },
                 options.minDuration + (options.delay || 0)
             );
@@ -102,6 +110,9 @@ export class TrackerService {
             return;
         }
         this.promiseList.splice(index, 1);
+        if (!this.durationPromise) {
+            this.onCheckPending.emit();
+        }
     }
 
 }
