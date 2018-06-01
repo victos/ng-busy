@@ -1,3 +1,5 @@
+**moved to https://github.com/victos/angular-opensource/tree/master/projects/ng-busy**
+
 **Ng Busy** can show busy/loading indicators on any promise, or on any Observable's subscription.
 
 ![demo](https://raw.githubusercontent.com/devyumao/devyumao.github.io/master/angular2-busy/img/demo.gif)
